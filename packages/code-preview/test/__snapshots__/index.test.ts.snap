@@ -1,0 +1,270 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should not transform code blocks that do not have \`preview\` attribute 1`] = `
+"\`\`\`jsx
+<Foo />
+\`\`\`
+"
+`;
+
+exports[`should support mdx compiler 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import {Foo} from 'foo';
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    div: "div",
+    figcaption: "figcaption",
+    figure: "figure",
+    h1: "h1",
+    p: "p",
+    pre: "pre",
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "Example"
+    }), "\\n", _jsxs(_components.figure, {
+      className: "preview",
+      children: [_jsx(_components.p, {
+        children: _jsx(_components.figcaption, {
+          children: "Code title"
+        })
+      }), _jsx(_components.div, {
+        className: "preview-showcase",
+        children: _jsx(Foo, {})
+      }), _jsx(_components.div, {
+        className: "preview-code",
+        children: _jsx(_components.pre, {
+          children: _jsx(_components.code, {
+            className: "language-jsx",
+            children: "<Foo />\\n"
+          })
+        })
+      })]
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;
+
+exports[`should transform code blocks into code previews 1`] = `
+"<h1>Example</h1>
+<figure class="preview">
+<figcaption>Code title</figcaption>
+<div class="preview-showcase">
+<div class="foo">Hello, World!</div>
+</div>
+<div class="preview-code">
+<pre><code class="language-html">&#x3C;div class='foo'>Hello, World!&#x3C;/div>
+</code></pre>
+</div>
+</figure>"
+`;
+
+exports[`should use a custom template when provided in options 1`] = `
+"<figure class='foo'>
+<figcaption>{title}</figcaption>
+<div class='foo-preview'>
+<div class='foo'>Hello, World!</div>
+</div>
+<div class='foo-code'>
+
+\`\`\`html
+<div class='foo'>Hello, World!</div>
+\`\`\`
+
+</div>
+</figure>
+"
+`;
+
+exports[`可以添加文件内容前缀 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    div: "div",
+    figcaption: "figcaption",
+    figure: "figure",
+    h1: "h1",
+    p: "p",
+    pre: "pre",
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "Test DEMO"
+    }), "\\n", _jsx(_components.h1, {
+      children: "Example"
+    }), "\\n", _jsxs(_components.figure, {
+      className: "preview",
+      children: [_jsx(_components.p, {
+        children: _jsx(_components.figcaption, {
+          children: "Code title"
+        })
+      }), _jsx(_components.div, {
+        className: "preview-showcase",
+        children: _jsx(_components.p, {
+          children: _jsx(_components.div, {
+            class: "foo",
+            children: "Hello, World!"
+          })
+        })
+      }), _jsx(_components.div, {
+        className: "preview-code",
+        children: _jsx(_components.pre, {
+          children: _jsx(_components.code, {
+            className: "language-html",
+            children: "<div class='foo'>Hello, World!</div>\\n"
+          })
+        })
+      })]
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;
+
+exports[`可以添加文件内容前缀-import 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import {Foo} from 'foo';
+import {Bar} from 'bar';
+import {C} from 'cc';
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    div: "div",
+    figcaption: "figcaption",
+    figure: "figure",
+    h1: "h1",
+    p: "p",
+    pre: "pre",
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "Example"
+    }), "\\n", _jsxs(_components.figure, {
+      className: "preview",
+      children: [_jsx(_components.p, {
+        children: _jsx(_components.figcaption, {
+          children: "Code title"
+        })
+      }), _jsx(_components.div, {
+        className: "preview-showcase",
+        children: _jsx(_components.p, {
+          children: _jsx(_components.div, {
+            class: "foo",
+            children: "Hello, World!"
+          })
+        })
+      }), _jsx(_components.div, {
+        className: "preview-code",
+        children: _jsx(_components.pre, {
+          children: _jsx(_components.code, {
+            className: "language-html",
+            children: "<div class='foo'>Hello, World!</div>\\n"
+          })
+        })
+      })]
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;
+
+exports[`复杂转换-jsx转dataUri导入 1`] = `
+"<h1>测试的 doc</h1>
+<ol>
+<li>测试 1</li>
+<li>测试 2<code>jsx</code></li>
+</ol>
+<p>代码<code>tsx</code></p>
+import Component_mfl2m9n3__1de6zdbf9 from "data:text/tsx;base64,aW1wb3J0IHsgY3JlYXRlU2lnbmFsIH0gZnJvbSAnc29saWQtanMnCgovKiog6K6h5pWw5ZmoIOKMmu+4jyAqLwpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBDb3VudGVyKCkgewogIGNvbnN0IFtudW0sIHNldE51bV0gPSBjcmVhdGVTaWduYWwoMCkKICByZXR1cm4gPGJ1dHRvbiBjbGFzcz0idGV4dC1yZWQgZm9udC02MDAiIG9uQ2xpY2s9eygpID0+IHNldE51bShudW0oKSArIDEpfT7orqHmlbAgPSB7bnVtKCl9PC9idXR0b24+Cn07";
+<div><p></p><div>计数器</div><p></p><div><div></div></div><div><pre><code class="language-tsx">import { createSignal } from 'solid-js'
+
+/** 计数器 ⌚️ */
+export default function Counter() {
+  const [num, setNum] = createSignal(0)
+  return &#x3C;button class="text-red font-600" onClick={() => setNum(num() + 1)}>计数 = {num()}&#x3C;/button>
+};
+</code></pre></div></div>
+<p>结束🉑</p>"
+`;
+
+exports[`复杂转换-jsx转dataUri导入且使用其他CodePreview组件 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import {CodePreview} from '~/codePreview';
+import Component_mfl2m9n3__1de6zdbf0 from "data:text/tsx;base64,aW1wb3J0IHsgY3JlYXRlU2lnbmFsIH0gZnJvbSAnc29saWQtanMnCgovKiog6K6h5pWw5ZmoIOKMmu+4jyAqLwpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBDb3VudGVyKCkgewogIGNvbnN0IFtudW0sIHNldE51bV0gPSBjcmVhdGVTaWduYWwoMCkKICByZXR1cm4gPGJ1dHRvbiBjbGFzcz0idGV4dC1yZWQgZm9udC02MDAiIG9uQ2xpY2s9eygpID0+IHNldE51bShudW0oKSArIDEpfT7orqHmlbAgPSB7bnVtKCl9PC9idXR0b24+Cn07";
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    h1: "h1",
+    li: "li",
+    ol: "ol",
+    p: "p",
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "测试的 doc"
+    }), "\\n", _jsxs(_components.ol, {
+      children: ["\\n", _jsx(_components.li, {
+        children: "测试 1"
+      }), "\\n", _jsxs(_components.li, {
+        children: ["测试 2", _jsx(_components.code, {
+          children: "jsx"
+        })]
+      }), "\\n"]
+    }), "\\n", _jsxs(_components.p, {
+      children: ["代码", _jsx(_components.code, {
+        children: "tsx"
+      })]
+    }), "\\n", "\\n", _jsx(CodePreview, {
+      preview: Component_mfl2m9n3__1de6zdbf0,
+      code: "import { createSignal } from 'solid-js'\\n\\n/** 计数器 ⌚️ */\\nexport default function Counter() {\\n  const [num, setNum] = createSignal(0)\\n  return <button class=\\"text-red font-600\\" onClick={() => setNum(num() + 1)}>计数 = {num()}</button>\\n};",
+      title: "计数器"
+    }), "\\n", _jsx(_components.p, {
+      children: "结束🉑"
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;
