@@ -29,4 +29,11 @@ export interface Options {
   templateOptions?: PupaOptions
   /** 在每个文件内容的前面添加统一字符 */
   contentPrefix?: string
+  /** 类似 `<code src="./example.tsx" />` 的模板 */
+  codeImportTemplate?: string
+  /** Transform code import template data. */
+  transformCodeImportTemplateData?: (
+    data: Record<string, unknown>
+  ) => Record<string, unknown>
+  codeImportTemplateOptions?: PupaOptions
 }

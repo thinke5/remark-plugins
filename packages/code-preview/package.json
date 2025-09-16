@@ -1,7 +1,7 @@
 {
   "name": "@thinke/remark-plugin-code-preview",
   "description": "A remark plugin for transforming code blocks into code previews",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "publishConfig": {
     "access": "public"
   },
@@ -37,9 +37,10 @@
     "test": "vitest",
     "bench": "vitest bench",
     "coverage": "vitest run --coverage",
-    "types": "tsc src/*.ts -d --emitDeclarationOnly --outDir ./dist",
+    "types": "tsc -d --emitDeclarationOnly --outDir ./dist",
     "lint": "tsc --noEmit && eslint . --cache --cache-location ../../node_modules/.eslint",
-    "format": "prettier . --write --cache-location ../../node_modules/.prettier --ignore-path ../../.prettierignore"
+    "format": "prettier . --write --cache-location ../../node_modules/.prettier --ignore-path ../../.prettierignore",
+    "npm_publish": "npm run build && npm version patch && npm publish"
   },
   "dependencies": {
     "attributes-parser": "^2.2.3",

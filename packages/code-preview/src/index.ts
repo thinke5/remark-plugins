@@ -1,12 +1,16 @@
 import parseAttrs from 'attributes-parser'
 import type { Root } from 'mdast'
 import { fromMarkdown } from 'mdast-util-from-markdown'
-import { mdxFromMarkdown } from 'mdast-util-mdx'
+import { mdxFromMarkdown, MdxJsxAttribute } from 'mdast-util-mdx'
 import { toMarkdown } from 'mdast-util-to-markdown'
 import { mdxjs } from 'micromark-extension-mdxjs'
 import pupa from 'pupa'
 import { EXIT, SKIP, visit } from 'unist-util-visit'
-import { ATTR_PATTERN, DEFAULT_TEMPLATE } from './constants.js'
+import {
+  ATTR_PATTERN,
+  DEFAULT_CODE_TEMPLATE,
+  DEFAULT_TEMPLATE
+} from './constants.js'
 import type { Options } from './types.js'
 
 export type * from './types.js'
@@ -27,7 +31,10 @@ export default function remarkCodePreview(
     data,
     mdxJsx,
     templateOptions,
-    contentPrefix
+    contentPrefix,
+    codeImportTemplate = DEFAULT_CODE_TEMPLATE,
+    transformCodeImportTemplateData = v => v,
+    codeImportTemplateOptions
   } = options
   const formatedTemplate = formatTemplate(template)
 
@@ -62,6 +69,7 @@ export default function remarkCodePreview(
           lang: node.lang,
           preview: node.value,
           code: `\n${code}`,
+          index,
           ...data,
           ...meta
         }),
@@ -71,9 +79,57 @@ export default function remarkCodePreview(
       const previewTree = fromMarkdown(renderedTemplate, fromMarkdownOption)
 
       // Replace the node tree with the preview tree
-      const len = parent?.children?.length
       parent?.children.splice(index, 1, ...previewTree.children)
 
+      const len = parent?.children?.length
+      return len && len - 1 === 0 ? [EXIT, index] : [SKIP, index + 2]
+    })
+    // handele <code src="./example.tsx" />
+    visit(mdast, 'mdxJsxFlowElement', (node, index = 0, parent) => {
+      if (node.name !== 'code') return
+
+      const attributes = Array.from(node.attributes)
+      const srcIndex = attributes.findIndex(
+        attr => attr.type === 'mdxJsxAttribute' && attr.name === 'src'
+      )
+      // if no src attribute, return
+      if (srcIndex === -1) return
+      // get the src  value
+      const src = attributes[srcIndex]?.value
+
+      // get other props
+      const otherProps = attributes
+        .map(_attr => {
+          const attr = _attr as MdxJsxAttribute
+          if (
+            attr.value &&
+            typeof attr.value === 'object' &&
+            attr.value.type === 'mdxJsxAttributeValueExpression'
+          ) {
+            return `${attr.name}={${attr.value.value}}`
+          } else if (attr.value === null) {
+            return `${attr.name}={true}`
+          }
+          return `${attr.name}=${JSON.stringify(attr.value)}`
+        })
+        .join(' ')
+
+      // render the template
+      const renderedTemplate = pupa(
+        codeImportTemplate,
+        transformCodeImportTemplateData({
+          src,
+          index,
+          otherProps
+        }),
+        codeImportTemplateOptions
+      )
+
+      const previewTree = fromMarkdown(renderedTemplate, fromMarkdownOption)
+      // Replace the node tree with the preview tree
+      parent?.children.splice(index, 1, ...previewTree.children)
+
+      const len = parent?.children?.length
       return len && len - 1 === 0 ? [EXIT, index] : [SKIP, index + 2]
     })
   }

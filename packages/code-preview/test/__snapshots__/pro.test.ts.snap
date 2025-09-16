@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`支持<code src="./example.tsx" />的导入 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import * as code_module_1 from './example.tsx';
+import code_content_1 from './example.tsx?raw';
+import * as code_module_0 from './example2.tsx';
+import code_content_0 from './example2.tsx?raw';
+function _createMdxContent(props) {
+  const _components = {
+    "code-preview": "code-preview",
+    h1: "h1",
+    p: "p",
+    ...props.components
+  }, _component0 = _components["code-preview"];
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "测试的 doc"
+    }), "\\n", "\\n", _jsx(_component0, {
+      preview: code_module_1,
+      src: "./example.tsx",
+      title: "标题",
+      open: true,
+      n: null,
+      num: 12,
+      text: 'xcc' + 123,
+      children: code_content_1
+    }), "\\n", _jsxs("div", {
+      children: [_jsx(_component0, {
+        preview: code_module_0,
+        src: "./example2.tsx",
+        children: code_content_0
+      }), _jsx("code", {})]
+    }), "\\n", _jsx(_components.p, {
+      children: "结束"
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;

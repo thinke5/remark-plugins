@@ -15,3 +15,12 @@ export const DEFAULT_TEMPLATE = `
 
 export const ATTR_PATTERN =
   /\s*preview(?:=(?:"[^"]*"|'[^']*'|[^"'\s]*))?$|preview(?:=(?:"[^"]*"|'[^']*'|[^"'\s]*))?\s*/g
+
+/**
+ * The default <code/> preview template.
+ */
+export const DEFAULT_CODE_TEMPLATE = `import * as code_module_{index} from '{src}';
+import code_content_{index} from '{src}?raw';
+
+<code-preview  preview={code_module_{index}} {otherProps}>{code_content_{index}}</code-preview>
+`

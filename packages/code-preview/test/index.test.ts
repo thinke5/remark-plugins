@@ -47,7 +47,7 @@ it('复杂转换-jsx转dataUri导入且使用其他CodePreview组件', async () 
           transformTemplateData(data: Record<string, string>) {
             if (['jsx', 'tsx'].includes(data.lang)) {
               const exampleCode = base64Encode(data.preview)
-              const hash = 'mfl2m9n3__1de6zdbf0' // `${Date.now().toString(36)}__${Math.random().toString(36).substr(2, 9)}`
+              const hash = data.index // `${Date.now().toString(36)}__${Math.random().toString(36).substr(2, 9)}`
               const componentName = `Component_${hash}`
               const importCode = `import ${componentName} from "data:text/tsx;base64,${exampleCode}";`
               const previewCode = componentName

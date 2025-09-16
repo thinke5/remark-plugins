@@ -223,7 +223,7 @@ export default function Counter() {
 exports[`复杂转换-jsx转dataUri导入且使用其他CodePreview组件 1`] = `
 "import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
 import {CodePreview} from '~/codePreview';
-import Component_mfl2m9n3__1de6zdbf0 from "data:text/tsx;base64,aW1wb3J0IHsgY3JlYXRlU2lnbmFsIH0gZnJvbSAnc29saWQtanMnCgovKiog6K6h5pWw5ZmoIOKMmu+4jyAqLwpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBDb3VudGVyKCkgewogIGNvbnN0IFtudW0sIHNldE51bV0gPSBjcmVhdGVTaWduYWwoMCkKICByZXR1cm4gPGJ1dHRvbiBjbGFzcz0idGV4dC1yZWQgZm9udC02MDAiIG9uQ2xpY2s9eygpID0+IHNldE51bShudW0oKSArIDEpfT7orqHmlbAgPSB7bnVtKCl9PC9idXR0b24+Cn07";
+import Component_4 from "data:text/tsx;base64,aW1wb3J0IHsgY3JlYXRlU2lnbmFsIH0gZnJvbSAnc29saWQtanMnCgovKiog6K6h5pWw5ZmoIOKMmu+4jyAqLwpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBDb3VudGVyKCkgewogIGNvbnN0IFtudW0sIHNldE51bV0gPSBjcmVhdGVTaWduYWwoMCkKICByZXR1cm4gPGJ1dHRvbiBjbGFzcz0idGV4dC1yZWQgZm9udC02MDAiIG9uQ2xpY2s9eygpID0+IHNldE51bShudW0oKSArIDEpfT7orqHmlbAgPSB7bnVtKCl9PC9idXR0b24+Cn07";
 function _createMdxContent(props) {
   const _components = {
     code: "code",
@@ -249,7 +249,7 @@ function _createMdxContent(props) {
         children: "tsx"
       })]
     }), "\\n", "\\n", _jsx(CodePreview, {
-      preview: Component_mfl2m9n3__1de6zdbf0,
+      preview: Component_4,
       code: "import { createSignal } from 'solid-js'\\n\\n/** 计数器 ⌚️ */\\nexport default function Counter() {\\n  const [num, setNum] = createSignal(0)\\n  return <button class=\\"text-red font-600\\" onClick={() => setNum(num() + 1)}>计数 = {num()}</button>\\n};",
       title: "计数器"
     }), "\\n", _jsx(_components.p, {

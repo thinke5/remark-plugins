@@ -1,9 +1,11 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
-  
+
   "compilerOptions": {
     "types": ["vite/client", "vitest/globals"],
     "declaration": false,
-    "noEmit": false
+    "noEmit": false,
+    "target": "esnext",
+    "lib": ["esnext"]
   }
 }
