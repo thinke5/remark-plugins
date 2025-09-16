@@ -118,6 +118,7 @@ export default function remarkCodePreview(
       const renderedTemplate = pupa(
         codeImportTemplate,
         transformCodeImportTemplateData({
+          attributes,
           src,
           index,
           otherProps

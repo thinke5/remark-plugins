@@ -136,6 +136,26 @@ it('可以添加文件内容前缀', async () => {
   expect(String(file)).toMatchSnapshot()
 })
 
+it('should support mata', async () => {
+  const file = await remark()
+    .use(remarkCodePreview, {
+      transformTemplateData(data) {
+        // console.log(data)
+        return data
+      }
+    })
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
+    .use(rehypeStringify, { allowDangerousHtml: true }).process(`# Example
+
+\`\`\`html preview title="Code title" desc="Code desc" name="Code name"
+<div class='foo'>Hello, World!</div>
+\`\`\`
+`)
+
+  expect(String(file)).toMatchSnapshot()
+})
+
 it('should transform code blocks into code previews', async () => {
   const file = await remark()
     .use(remarkCodePreview)

@@ -1,7 +1,7 @@
 {
   "name": "@thinke/remark-plugin-code-preview",
   "description": "A remark plugin for transforming code blocks into code previews",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publishConfig": {
     "access": "public"
   },
