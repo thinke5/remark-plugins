@@ -54,12 +54,10 @@ export default function remarkCodePreview(
         const [docgenResult] = docgen.parse(filePath, {
           shouldIncludePropTagMap: true,
           shouldExtractLiteralValuesFromEnum: true,
-          ...docgenParserOptions,
-          propFilter: {
-            ...docgenParserOptions?.propFilter,
-            skipPropsWithoutDoc: true
-          }
+          ...docgenParserOptions
         })
+
+        // console.log(JSON.stringify(docgenResult, null, 2))
 
         // transform to markdown
         const markdownCode = transformToMarkdown(docgenResult)
@@ -84,21 +82,24 @@ function defaultTransformToMarkdown(data: docgen.ComponentDoc): string {
   const codes = [
     ['propName', '说明', '类型', '默认值'],
     ['---', '---', '---', '---'],
-    ...Object.entries(data.props).map(([key, value]) => {
-      return [
-        key,
-        getPropsDescriptionString(value.description),
-        `\`${getPropsTypeString(value.type)}\``,
-        getPropsDefaultValueString(value.defaultValue)
-      ]
-    })
+    ...(Object.entries(data.props)
+      .map(([key, value]) => {
+        if ((value.tags as Record<string, unknown>).skip) {
+          return null
+        }
+        return [
+          key,
+          getPropsDescriptionString(value.description),
+          `\`${getPropsTypeString(value.type)}\``,
+          getPropsDefaultValueString(value.defaultValue)
+        ]
+      })
+      .filter(Boolean) as string[][])
   ]
     .map(line => `| ${line.join(' | ')} |`)
     .join('\n')
 
-  return `## API
-
-${codes}\n\n`
+  return codes
 }
 
 function getPropsDefaultValueString(defaultValue: string | { value: string }) {
@@ -109,7 +110,7 @@ function getPropsDefaultValueString(defaultValue: string | { value: string }) {
 }
 
 function getPropsDescriptionString(description: string) {
-  return description.replaceAll('\n', '<br/>')
+  return description.replaceAll('\n', '<br/>') || '-'
 }
 
 function getPropsTypeString(type: docgen.PropItemType) {

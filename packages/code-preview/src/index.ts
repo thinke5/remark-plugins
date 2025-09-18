@@ -95,7 +95,7 @@ export default function remarkCodePreview(
       // if no src attribute, return
       if (srcIndex === -1) return
       // get the src  value
-      const src = attributes[srcIndex]?.value
+      const src = attributes[srcIndex].value
 
       // get other props
       const otherProps = attributes

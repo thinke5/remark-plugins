@@ -20,8 +20,6 @@ function _createMdxContent(props) {
   return _jsxs(_Fragment, {
     children: [_jsx(_components.h1, {
       children: "Example"
-    }), "\\n", _jsx(_components.h2, {
-      children: "API"
     }), "\\n", _jsxs(_components.table, {
       children: [_jsx(_components.thead, {
         children: _jsxs(_components.tr, {
@@ -76,6 +74,18 @@ function _createMdxContent(props) {
           }), _jsx(_components.td, {
             children: "-"
           })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "node"
+          }), _jsx(_components.td, {
+            children: "-"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "React.ReactNode"
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
         })]
       })]
     }), "\\n", _jsx(_components.h2, {
@@ -114,8 +124,6 @@ function _createMdxContent(props) {
   return _jsxs(_Fragment, {
     children: [_jsx(_components.h1, {
       children: "Example"
-    }), "\\n", _jsx(_components.h2, {
-      children: "API"
     }), "\\n", _jsxs(_components.table, {
       children: [_jsx(_components.thead, {
         children: _jsxs(_components.tr, {
@@ -180,6 +188,18 @@ function _createMdxContent(props) {
           }), _jsx(_components.td, {
             children: _jsx(_components.code, {
               children: "ICCname"
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "ddd"
+          }), _jsx(_components.td, {
+            children: "-"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "string"
             })
           }), _jsx(_components.td, {
             children: "-"

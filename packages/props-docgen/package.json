@@ -1,7 +1,7 @@
 {
   "name": "@thinke/remark-plugin-props-docgen",
   "description": "A remark plugin for transforming props-docgen",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "publishConfig": {
     "access": "public"
   },

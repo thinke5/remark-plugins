@@ -18,6 +18,7 @@ export function TestCom2(props: {
   age?: number
   /** 性别 */
   gender?: 'male' | 'female'
+  node?: React.ReactNode
 }) {
   return <div data-name={props.name}>This is TestCom</div>
 }
