@@ -1,0 +1,254 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should support inline 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import {Foo} from 'foo';
+function _createMdxContent(props) {
+  const _components = {
+    br: "br",
+    code: "code",
+    h1: "h1",
+    h2: "h2",
+    table: "table",
+    tbody: "tbody",
+    td: "td",
+    th: "th",
+    thead: "thead",
+    tr: "tr",
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "Example"
+    }), "\\n", _jsx(_components.h2, {
+      children: "API"
+    }), "\\n", _jsxs(_components.table, {
+      children: [_jsx(_components.thead, {
+        children: _jsxs(_components.tr, {
+          children: [_jsx(_components.th, {
+            children: "propName"
+          }), _jsx(_components.th, {
+            children: "说明"
+          }), _jsx(_components.th, {
+            children: "类型"
+          }), _jsx(_components.th, {
+            children: "默认值"
+          })]
+        })
+      }), _jsxs(_components.tbody, {
+        children: [_jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "name"
+          }), _jsx(_components.td, {
+            children: "名称"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "string"
+            })
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "'TestCom'"
+            })
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "age"
+          }), _jsxs(_components.td, {
+            children: ["年龄", _jsx(_components.br, {}), _jsx(_components.br, {}), "多行注释", _jsx(_components.br, {}), "多", _jsx(_components.br, {}), "行"]
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "number"
+            })
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "18"
+            })
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "gender"
+          }), _jsx(_components.td, {
+            children: "性别"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "\\"male\\" | \\"female\\""
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        })]
+      })]
+    }), "\\n", _jsx(_components.h2, {
+      children: "End"
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;
+
+exports[`should support outfile 1`] = `
+"import {Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs} from "react/jsx-runtime";
+import {Foo} from 'foo';
+function _createMdxContent(props) {
+  const _components = {
+    code: "code",
+    h1: "h1",
+    h2: "h2",
+    table: "table",
+    tbody: "tbody",
+    td: "td",
+    th: "th",
+    thead: "thead",
+    tr: "tr",
+    ...props.components
+  };
+  return _jsxs(_Fragment, {
+    children: [_jsx(_components.h1, {
+      children: "Example"
+    }), "\\n", _jsx(_components.h2, {
+      children: "API"
+    }), "\\n", _jsxs(_components.table, {
+      children: [_jsx(_components.thead, {
+        children: _jsxs(_components.tr, {
+          children: [_jsx(_components.th, {
+            children: "propName"
+          }), _jsx(_components.th, {
+            children: "说明"
+          }), _jsx(_components.th, {
+            children: "类型"
+          }), _jsx(_components.th, {
+            children: "默认值"
+          })]
+        })
+      }), _jsxs(_components.tbody, {
+        children: [_jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "name"
+          }), _jsx(_components.td, {
+            children: "名称"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "string"
+            })
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "'test'"
+            })
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "age"
+          }), _jsxs(_components.td, {
+            children: ["年龄 一个", _jsx(_components.code, {
+              children: "jsx-cc"
+            })]
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "number"
+            })
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "0"
+            })
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "otions"
+          }), _jsx(_components.td, {
+            children: "配置"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "Options"
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "cc"
+          }), _jsx(_components.td, {
+            children: "cc配置"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "ICCname"
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "prop1"
+          }), _jsx(_components.td, {
+            children: "prop1 description"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "string"
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "prop2"
+          }), _jsx(_components.td, {
+            children: "prop2 description"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "number"
+            })
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "0"
+            })
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "prop3"
+          }), _jsx(_components.td, {
+            children: "prop3 description"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "() => void"
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        }), _jsxs(_components.tr, {
+          children: [_jsx(_components.td, {
+            children: "prop4"
+          }), _jsx(_components.td, {
+            children: "prop4 description"
+          }), _jsx(_components.td, {
+            children: _jsx(_components.code, {
+              children: "\\"option1\\" | \\"option2\\" | \\"option3\\""
+            })
+          }), _jsx(_components.td, {
+            children: "-"
+          })]
+        })]
+      })]
+    }), "\\n", _jsx(_components.h2, {
+      children: "End"
+    })]
+  });
+}
+export default function MDXContent(props = {}) {
+  const {wrapper: MDXLayout} = props.components || ({});
+  return MDXLayout ? _jsx(MDXLayout, {
+    ...props,
+    children: _jsx(_createMdxContent, {
+      ...props
+    })
+  }) : _createMdxContent(props);
+}
+"
+`;

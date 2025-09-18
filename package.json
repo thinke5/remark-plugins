@@ -40,5 +40,8 @@
   "prettier": "doogu/prettier.config.js",
   "release": {
     "extends": "doogu/release.config.js"
+  },
+  "dependencies": {
+    "vfile": "^6.0.3"
   }
 }

@@ -1,0 +1,61 @@
+{
+  "name": "@thinke/remark-plugin-props-docgen",
+  "description": "A remark plugin for transforming props-docgen",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "preview",
+    "snippet",
+    "template",
+    "code",
+    "codefence",
+    "stilearning-remark-plugins"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "changelog.md",
+    "readme.md"
+  ],
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite build --watch",
+    "build": "vite build --ssr 'src/index.ts' && npm run types",
+    "test": "vitest",
+    "bench": "vitest bench",
+    "coverage": "vitest run --coverage",
+    "types": "tsc -d --emitDeclarationOnly --outDir ./dist",
+    "lint": "tsc --noEmit && eslint . --cache --cache-location ../../node_modules/.eslint",
+    "format": "prettier . --write --cache-location ../../node_modules/.prettier --ignore-path ../../.prettierignore",
+    "npm_publish": "npm run build && npm version patch && npm publish"
+  },
+  "dependencies": {
+    "attributes-parser": "^2.2.3",
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-gfm-table": "^2.0.0",
+    "mdast-util-mdx": "^3.0.0",
+    "mdast-util-to-markdown": "^2.1.2",
+    "micromark-extension-gfm-table": "^2.1.1",
+    "micromark-extension-mdxjs": "^3.0.0",
+    "pupa": "^3.1.0",
+    "react-docgen-typescript": "^2.4.0",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "mdast": "^3.0.0"
+  }
+}
